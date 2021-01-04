@@ -1,3 +1,85 @@
-PODFILE CHECKSUM: 98b8dfd281ad36800f0a10f6dd1d20b3e20796da
+PODS:
+  - Alamofire (5.4.1)
+  - CocoaLumberjack/Core (3.7.0)
+  - CocoaLumberjack/Swift (3.7.0):
+    - CocoaLumberjack/Core
+  - Hero (1.5.0)
+  - Kingfisher (5.15.8):
+    - Kingfisher/Core (= 5.15.8)
+  - Kingfisher/Core (5.15.8)
+  - lottie-ios (3.1.9)
+  - MBProgressHUD (1.2.0)
+  - MJRefresh (3.5.0)
+  - Moya/Core (15.0.0-alpha.1):
+    - Alamofire (~> 5.0)
+  - Moya/RxSwift (15.0.0-alpha.1):
+    - Moya/Core
+    - RxSwift (~> 5.0)
+  - pop (1.0.12)
+  - Popover (1.3.0)
+  - RxCocoa (5.1.1):
+    - RxRelay (~> 5)
+    - RxSwift (~> 5)
+  - RxRelay (5.1.1):
+    - RxSwift (~> 5)
+  - RxSwift (5.1.1)
+  - Skins (0.0.5)
+  - SnapKit (5.0.1)
+  - SwiftSoup (2.3.2)
+
+DEPENDENCIES:
+  - CocoaLumberjack/Swift (~> 3.7.0)
+  - Hero (~> 1.5.0)
+  - Kingfisher (~> 5.15.8)
+  - lottie-ios (~> 3.1.9)
+  - MBProgressHUD (~> 1.2.0)
+  - MJRefresh (~> 3.5.0)
+  - Moya/RxSwift (~> 15.0.0-alpha.1)
+  - pop (~> 1.0.12)
+  - Popover (~> 1.3.0)
+  - RxCocoa (~> 5.0)
+  - RxSwift (~> 5.0)
+  - Skins (~> 0.0.5)
+  - SnapKit (~> 5.0.1)
+  - SwiftSoup (~> 2.3.2)
+
+SPEC REPOS:
+  https://github.com/CocoaPods/Specs.git:
+    - Alamofire
+    - CocoaLumberjack
+    - Hero
+    - Kingfisher
+    - lottie-ios
+    - MBProgressHUD
+    - MJRefresh
+    - Moya
+    - pop
+    - Popover
+    - RxCocoa
+    - RxRelay
+    - RxSwift
+    - Skins
+    - SnapKit
+    - SwiftSoup
+
+SPEC CHECKSUMS:
+  Alamofire: 2291f7d21ca607c491dd17642e5d40fdcda0e65c
+  CocoaLumberjack: e8955b9d337ac307103b0a34fd141c32f27e53c5
+  Hero: b7385b75e7259da62f4f85462f59a5082d66b058
+  Kingfisher: a3c03d702433fa6cfedabb2bddbe076fb8f2e902
+  lottie-ios: 3a3758ef5a008e762faec9c9d50a39842f26d124
+  MBProgressHUD: 3ee5efcc380f6a79a7cc9b363dd669c5e1ae7406
+  MJRefresh: 6afc955813966afb08305477dd7a0d9ad5e79a16
+  Moya: 101c94dfb29289736ecd20fa6e82bea665e0671b
+  pop: d582054913807fd11fd50bfe6a539d91c7e1a55a
+  Popover: 10e1d9528f81d9504df984b7b3f491292bc1822d
+  RxCocoa: 32065309a38d29b5b0db858819b5bf9ef038b601
+  RxRelay: d77f7d771495f43c556cbc43eebd1bb54d01e8e9
+  RxSwift: 81470a2074fa8780320ea5fe4102807cb7118178
+  Skins: 66cfa9ae616c81de293aa40505cfee4fb7211ac7
+  SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
+  SwiftSoup: f97bc4e988c7729d6457f9642f974c617a6e2510
+
+PODFILE CHECKSUM: 36494d8cc66ef4fccbd3c64d5186e58c6ca9a316
 
 COCOAPODS: 1.10.0
