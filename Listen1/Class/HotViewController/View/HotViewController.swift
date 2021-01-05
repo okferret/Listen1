@@ -108,7 +108,7 @@ class HotViewController: UIViewController {
     /// frc: NSFetchedResultsController<Playlist>
     private lazy var frc: NSFetchedResultsController<Playlist> = {
         let _freq: NSFetchRequest<Playlist> = Playlist.fetchRequest()
-        _freq.predicate = .init(format: "fromValue == %@", item.title)
+        _freq.predicate = .init(format: "fromValue == %@", item.from.rawValue)
         _freq.sortDescriptors = [
             .init(key: "modified", ascending: true)
         ]
@@ -124,7 +124,7 @@ class HotViewController: UIViewController {
         didSet {
             (navigationItem.leftBarButtonItem?.customView as? UILabel)?.text = item.title
             (navigationItem.leftBarButtonItem?.customView as? UILabel)?.sizeToFit()
-            frc.fetchRequest.predicate = .init(format: "fromValue == %@", item.title)
+            frc.fetchRequest.predicate = .init(format: "fromValue == %@", item.from.rawValue)
             try? frc.performFetch()
             tableView.reloadData()
         }
@@ -202,7 +202,8 @@ extension HotViewController {
             }.disposed(by: bag)
             
         case (_, _):
-            break
+            tableView.mj_header?.endRefreshing()
+            tableView.mj_footer?.endRefreshing()
         }
     }
 }

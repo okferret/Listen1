@@ -249,3 +249,20 @@ extension HotMenuView.Item {
         return .init(title: "虾米音乐   ", image: UIImage.init(named: "source"))
     }
 }
+
+extension HotMenuView.Item {
+    
+    /// Playlist.From
+    internal var from: Playlist.From {
+        switch self {
+        case .netease: return .netease
+        case .bilibili: return .bilibili
+        case .kugou: return .kugou
+        case .kuwo: return .kuwo
+        case .migu: return .migu
+        case .QQ: return .QQ
+        case .xiami: return .xiami
+        default: fatalError("暂不支持")
+        }
+    }
+}
