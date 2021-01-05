@@ -7,6 +7,7 @@
 
 import UIKit
 import Skins
+import Hero
 
 /// MainViewController
 class MainViewController: UITabBarController  {
@@ -40,10 +41,10 @@ extension MainViewController {
         // coding here ...
         view.skin.backgroundColor = .background
         tabBar.skin.tintColor = .major
-        let font: UIFont = .theme(ofSize: 12.0, weight: .semibold)
-        
+          
         // 热门音乐
         do {
+            let font: UIFont = .theme(ofSize: 12.0, weight: .semibold)
             let controller: HotViewController = .init()
             let navi: UINavigationController = .init(rootViewController: controller)
             navi.tabBarItem.title = "热门"
@@ -53,19 +54,23 @@ extension MainViewController {
             navi.tabBarItem.selectedImage = UIImage.init(named: "tabbar_hot")?.withRenderingMode(.alwaysTemplate)
             addChild(navi)
         }
+        
         // 播放
         do {
+            let font: UIFont = .theme(ofSize: 12.0, weight: .semibold)
             let controller: PlayViewController = .init()
             let navi: UINavigationController = .init(rootViewController: controller)
+            navi.tabBarItem.title = "播放"
             navi.tabBarItem.setTitleTextAttributes([.font: font], for: .normal)
             navi.tabBarItem.setTitleTextAttributes([.font: font], for: .selected)
             navi.tabBarItem.image = UIImage.init(named: "tabbar_play")?.withRenderingMode(.alwaysTemplate)
             navi.tabBarItem.selectedImage = UIImage.init(named: "tabbar_play")?.withRenderingMode(.alwaysTemplate)
-            navi.tabBarItem.title = "播放"
             addChild(navi)
         }
+        
         // 我的
         do {
+            let font: UIFont = .theme(ofSize: 12.0, weight: .semibold)
             let controller: MineViewController = .init()
             let navi: UINavigationController = .init(rootViewController: controller)
             navi.tabBarItem.setTitleTextAttributes([.font: font], for: .normal)
@@ -76,4 +81,6 @@ extension MainViewController {
             addChild(navi)
         }
     }
+    
+    
 }

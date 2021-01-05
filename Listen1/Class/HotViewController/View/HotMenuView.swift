@@ -222,30 +222,30 @@ extension HotMenuView.Item {
     
     /// 网易云音乐
     internal static var netease: HotMenuView.Item {
-        return .init(title: "网易云音乐", image: UIImage.init(named: "menu_source"))
+        return .init(title: "网易云音乐", image: UIImage.init(named: "source"))
     }
     /// 哔哩哔哩
     internal static var bilibili: HotMenuView.Item {
-        return .init(title: "哔哩哔哩   ", image: UIImage.init(named: "menu_source"))
+        return .init(title: "哔哩哔哩   ", image: UIImage.init(named: "source"))
     }
     /// 酷狗音乐
     internal static var kugou: HotMenuView.Item {
-        return .init(title: "酷狗音乐   ", image: UIImage.init(named: "menu_source"))
+        return .init(title: "酷狗音乐   ", image: UIImage.init(named: "source"))
     }
     /// 酷我音乐
     internal static var kuwo: HotMenuView.Item {
-        return .init(title: "酷我音乐   ", image: UIImage.init(named: "menu_source"))
+        return .init(title: "酷我音乐   ", image: UIImage.init(named: "source"))
     }
     /// 咪咕音乐
     internal static var migu: HotMenuView.Item {
-        return .init(title: "咪咕音乐   ", image: UIImage.init(named: "menu_source"))
+        return .init(title: "咪咕音乐   ", image: UIImage.init(named: "source"))
     }
     ///QQ音乐
     internal static var QQ: HotMenuView.Item {
-        return .init(title: "QQ音乐     ", image: UIImage.init(named: "menu_source"))
+        return .init(title: "QQ音乐     ", image: UIImage.init(named: "source"))
     }
     // 虾米音乐
     internal static var xiami: HotMenuView.Item {
-        return .init(title: "虾米音乐   ", image: UIImage.init(named: "menu_source"))
+        return .init(title: "虾米音乐   ", image: UIImage.init(named: "source"))
     }
 }

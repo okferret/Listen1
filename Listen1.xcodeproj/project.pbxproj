@@ -18,6 +18,7 @@
 		C7BF369825A2B1C600F9425B /* Playlist+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7BF369725A2B1C600F9425B /* Playlist+Extensions.swift */; };
 		C7BF369B25A2B27C00F9425B /* NSManagedObjectContext+Hub.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7BF369925A2B27C00F9425B /* NSManagedObjectContext+Hub.swift */; };
 		C7BF369C25A2B27C00F9425B /* NSManagedObject+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7BF369A25A2B27C00F9425B /* NSManagedObject+Extensions.swift */; };
+		C7BF36A325A2D58900F9425B /* RSA.m in Sources */ = {isa = PBXBuildFile; fileRef = C7BF36A125A2D58900F9425B /* RSA.m */; };
 		C7C33626259D9F4100BD60CF /* skins.default.plist in Resources */ = {isa = PBXBuildFile; fileRef = C7C33625259D9F4100BD60CF /* skins.default.plist */; };
 		C7C33629259D9F5500BD60CF /* SKColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7C33628259D9F5500BD60CF /* SKColor+Extensions.swift */; };
 		C7C3362D259DA0C000BD60CF /* LTError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7C3362C259DA0C000BD60CF /* LTError.swift */; };
@@ -100,6 +101,9 @@
 		C7BF369725A2B1C600F9425B /* Playlist+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Playlist+Extensions.swift"; sourceTree = "<group>"; };
 		C7BF369925A2B27C00F9425B /* NSManagedObjectContext+Hub.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSManagedObjectContext+Hub.swift"; sourceTree = "<group>"; };
 		C7BF369A25A2B27C00F9425B /* NSManagedObject+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSManagedObject+Extensions.swift"; sourceTree = "<group>"; };
+		C7BF36A025A2D58800F9425B /* Listen1-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Listen1-Bridging-Header.h"; sourceTree = "<group>"; };
+		C7BF36A125A2D58900F9425B /* RSA.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSA.m; sourceTree = "<group>"; };
+		C7BF36A225A2D58900F9425B /* RSA.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSA.h; sourceTree = "<group>"; };
 		C7C33625259D9F4100BD60CF /* skins.default.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = skins.default.plist; sourceTree = "<group>"; };
 		C7C33628259D9F5500BD60CF /* SKColor+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SKColor+Extensions.swift"; sourceTree = "<group>"; };
 		C7C3362C259DA0C000BD60CF /* LTError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LTError.swift; sourceTree = "<group>"; };
@@ -223,6 +227,15 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		C7BF369F25A2D58000F9425B /* RSA */ = {
+			isa = PBXGroup;
+			children = (
+				C7BF36A225A2D58900F9425B /* RSA.h */,
+				C7BF36A125A2D58900F9425B /* RSA.m */,
+			);
+			path = RSA;
+			sourceTree = "<group>";
+		};
 		C7C33624259D9F1000BD60CF /* Skins */ = {
 			isa = PBXGroup;
 			children = (
@@ -270,6 +283,7 @@
 		C7C3364E259DB3AF00BD60CF /* Others */ = {
 			isa = PBXGroup;
 			children = (
+				C7BF369F25A2D58000F9425B /* RSA */,
 				C7C8B22A259DE9B200F2B661 /* ProgressHUD */,
 				C7C3364F259DB3C000BD60CF /* Relayout.swift */,
 				C7C8B1F1259DCF5700F2B661 /* Printer.swift */,
@@ -362,9 +376,10 @@
 				C7EC650E259D61F5002360AD /* Listen1.entitlements */,
 				C7EC6507259D61F0002360AD /* Info.plist */,
 				C7EC64F9259D61F0002360AD /* AppDelegate.swift */,
-				C7EC6543259D7D99002360AD /* Configuration.swift */,
 				C7EC64FB259D61F0002360AD /* SceneDelegate.swift */,
+				C7EC6543259D7D99002360AD /* Configuration.swift */,
 				C7EC64FD259D61F0002360AD /* ViewController.swift */,
+				C7BF36A025A2D58800F9425B /* Listen1-Bridging-Header.h */,
 				C7EC6502259D61F0002360AD /* Assets.xcassets */,
 				C7EC6504259D61F0002360AD /* LaunchScreen.storyboard */,
 				C7EC64FF259D61F0002360AD /* Main.storyboard */,
@@ -480,6 +495,7 @@
 				TargetAttributes = {
 					C7EC64F5259D61F0002360AD = {
 						CreatedOnToolsVersion = 12.3;
+						LastSwiftMigration = 1230;
 					};
 				};
 			};
@@ -577,6 +593,7 @@
 				C7C8B271259E00AB00F2B661 /* HotPlaylistCell.swift in Sources */,
 				C7C336A4259DCBFE00BD60CF /* Notification+Extensions.swift in Sources */,
 				C7C336A9259DCBFE00BD60CF /* UIFont+Extensions.swift in Sources */,
+				C7BF36A325A2D58900F9425B /* RSA.m in Sources */,
 				C7C336AC259DCBFE00BD60CF /* ImageCache+Hub.swift in Sources */,
 				C7C8B25B259DEF7500F2B661 /* NeteaseProxy.swift in Sources */,
 				C7C33650259DB3C000BD60CF /* Relayout.swift in Sources */,
@@ -765,6 +782,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Listen1/Listen1.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = S8J5HAH3SU;
@@ -777,6 +795,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.sky.tramp.Listen1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTS_MACCATALYST = NO;
+				SWIFT_OBJC_BRIDGING_HEADER = "Listen1/Listen1-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -788,6 +808,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Listen1/Listen1.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = S8J5HAH3SU;
@@ -800,6 +821,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.sky.tramp.Listen1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTS_MACCATALYST = NO;
+				SWIFT_OBJC_BRIDGING_HEADER = "Listen1/Listen1-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

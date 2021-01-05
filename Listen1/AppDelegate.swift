@@ -32,7 +32,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             let controller: MainViewController = .init()
             application.hub.setup(rootViewController: controller, for: window)
         }
-       
+        
         return true
     }
     

@@ -10,3 +10,7 @@ import UIKit
 
 /// Configuration
 class Configuration  {}
+extension Configuration {
+    
+    
+}

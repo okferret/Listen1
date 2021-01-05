@@ -13,15 +13,34 @@ import RxSwift
 import Hero
 import MJRefresh
 import CoreData
+import Kingfisher
 
+// MARK: - HotViewController.Interface
 extension HotViewController {
     
     /// Interface
     enum Interface {
         /// 刷新操作
-        case refresh(_ length: Int)
+        case refresh(_ offset: Int, _ length: Int)
         /// 加载更多
         case load(_ offset: Int, _ length: Int)
+    }
+}
+
+extension HotViewController.Interface {
+    /// 步长
+    internal var length: Int {
+        switch self {
+        case .refresh(_, let length): return length
+        case .load(_, let length): return length
+        }
+    }
+    /// 偏移量
+    internal var offset: Int {
+        switch self {
+        case .refresh(let offset, _): return offset
+        case .load(let offset, _): return offset
+        }
     }
 }
 
@@ -49,6 +68,17 @@ class HotViewController: UIViewController {
         }.disposed(by: bag)
         return .init(customView: _button)
     }()
+        
+    /// noteItem
+    private lazy var noteItem: UIBarButtonItem = {
+        let _label = UILabel.init(frame: .zero)
+        _label.font = .theme(ofSize: 12.0, weight: .medium)
+        _label.skin.textColor = .medium
+        _label.text = item.title
+        _label.textAlignment = .left
+        _label.sizeToFit()
+        return .init(customView: _label)
+    }()
     
     /// UITableView
     private lazy var tableView: UITableView = {
@@ -58,9 +88,12 @@ class HotViewController: UIViewController {
         _tableView.register(HotPlaylistCell.self, forCellReuseIdentifier: HotPlaylistCell.identifier)
         _tableView.skin.backgroundColor = .background
         _tableView.tableFooterView = .init(frame: .zero)
+        _tableView.backgroundView = UIImageView.init(image: UIImage.init(named: "empty"))
+        _tableView.backgroundView?.contentMode = .scaleAspectFit
         _tableView.mj_header = MJRefreshNormalHeader.init(refreshingBlock: {[weak self] in
             guard let this = self else { return }
-            this.fetchData(with: .refresh(this.length), item: this.item)
+            this.offset = 0
+            this.fetchData(with: .refresh(this.offset, this.length), item: this.item)
         })
         _tableView.mj_footer = MJRefreshAutoStateFooter.init(refreshingBlock: {[weak self] in
             guard let this = self else { return }
@@ -75,6 +108,7 @@ class HotViewController: UIViewController {
     /// frc: NSFetchedResultsController<Playlist>
     private lazy var frc: NSFetchedResultsController<Playlist> = {
         let _freq: NSFetchRequest<Playlist> = Playlist.fetchRequest()
+        _freq.predicate = .init(format: "fromValue == %@", item.title)
         _freq.sortDescriptors = [
             .init(key: "modified", ascending: true)
         ]
@@ -86,7 +120,15 @@ class HotViewController: UIViewController {
     }()
     
     /// HotMenuView.Item
-    private var item: HotMenuView.Item = .netease
+    private var item: HotMenuView.Item = .netease {
+        didSet {
+            (navigationItem.leftBarButtonItem?.customView as? UILabel)?.text = item.title
+            (navigationItem.leftBarButtonItem?.customView as? UILabel)?.sizeToFit()
+            frc.fetchRequest.predicate = .init(format: "fromValue == %@", item.title)
+            try? frc.performFetch()
+            tableView.reloadData()
+        }
+    }
     /// 偏移量
     private var offset: Int = 0
     /// 步长
@@ -113,7 +155,8 @@ extension HotViewController {
     private func initialize() {
         // coding here ...
         navigationItem.rightBarButtonItem = menuItem
-        navigationItem.title = "热门音乐"
+        navigationItem.leftBarButtonItem = noteItem
+        navigationItem.title = "热门推荐"
         
         // 布局
         view.addSubview(tableView)
@@ -127,9 +170,8 @@ extension HotViewController {
     /// - Parameter interface: Interface
     private func fetchData(with interface: Interface, item: Item) {
         switch (item, interface) {
-        case (.netease, .refresh(let length)):
-            offset = 0
-            NeteaseProxy.recommends(offset: offset, length: length, cleanAll: true).subscribe { [weak self](evt) in
+        case (.netease, .refresh(let offset, let length)):
+            NeteaseProxy.recommends(with: .refresh(offset, length)).subscribe { [weak self](evt) in
                 guard let this = self else { return }
                 switch evt {
                 case .error(let error):
@@ -143,7 +185,7 @@ extension HotViewController {
             }.disposed(by: bag)
             
         case (.netease, .load(let offset, let length)):
-            NeteaseProxy.recommends(offset: offset, length: length, cleanAll: false).subscribe { [weak self](evt) in
+            NeteaseProxy.recommends(with: .load(offset, length)).subscribe { [weak self](evt) in
                 guard let this = self else { return }
                 switch evt {
                 case .error(let error):
@@ -211,6 +253,8 @@ extension HotViewController: UITableViewDataSource {
     /// - Parameter tableView: UITableView
     /// - Returns: Int
     internal func numberOfSections(in tableView: UITableView) -> Int {
+        tableView.mj_footer?.isHidden = frc.fetchedObjects?.count == 0
+        tableView.backgroundView?.isHidden = frc.fetchedObjects?.count != 0
         return frc.sections?.count ?? 0
     }
     
@@ -248,6 +292,7 @@ extension HotViewController: NSFetchedResultsControllerDelegate {
     /// - Parameter controller: NSFetchedResultsController<NSFetchRequestResult>
     internal func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         tableView.endUpdates()
+        tableView.mj_footer?.isHidden = frc.fetchedObjects?.count == 0
     }
     
     /// didChange

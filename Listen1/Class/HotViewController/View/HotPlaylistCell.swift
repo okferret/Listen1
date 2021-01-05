@@ -34,6 +34,7 @@ class HotPlaylistCell: UITableViewCell {
         let _label = UILabel.init()
         _label.font = .theme(ofSize: 17.0, weight: .medium)
         _label.skin.textColor = .heavy
+        _label.lineBreakMode = .byTruncatingMiddle
         return _label
     }()
     
@@ -42,6 +43,7 @@ class HotPlaylistCell: UITableViewCell {
         let _label = UILabel.init()
         _label.font = .theme(ofSize: 14.0)
         _label.skin.textColor = .medium
+        _label.lineBreakMode = .byTruncatingMiddle
         return _label
     }()
     
@@ -98,18 +100,17 @@ extension HotPlaylistCell {
             $0.right.equalToSuperview().offset(relayout(-16.0))
         }
         
+        contentView.addSubview(sourceLabel)
+        sourceLabel.snp.makeConstraints {
+            $0.right.equalToSuperview().offset(relayout(-16.0)).priority(.high)
+            $0.bottom.equalTo(imgView).offset(relayout(-3.0))
+        }
+        
         contentView.addSubview(byLabel)
         byLabel.snp.makeConstraints {
             $0.left.equalTo(titleLabel)
             $0.bottom.equalTo(imgView).offset(relayout(-3.0))
-            $0.right.equalTo(contentView.snp.centerX)
-        }
-        
-        contentView.addSubview(sourceLabel)
-        sourceLabel.snp.makeConstraints {
-            $0.right.equalToSuperview().offset(relayout(-16.0))
-            $0.left.equalTo(contentView.snp.centerX)
-            $0.centerY.equalTo(byLabel)
+            $0.right.equalTo(sourceLabel.snp.left).offset(relayout(10.0))
         }
     }
     
